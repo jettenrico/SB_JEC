@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface DimCurrencyRepository {
 
-    int save(DimCurrency dcr);
-    int update(DimCurrency dcr);
+    int save(DimCurrency dc);
+    int update(DimCurrency dc);
     DimCurrency findById(long id);
 
     /*

@@ -46,6 +46,7 @@ public class DimCurrencyController {
                     dimCurrency.getCurrencyname()));
             return new ResponseEntity<>("Data berhasil dibuat.", HttpStatus.CREATED);
         } catch (Exception e) {
+            System.out.println(dimCurrency);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

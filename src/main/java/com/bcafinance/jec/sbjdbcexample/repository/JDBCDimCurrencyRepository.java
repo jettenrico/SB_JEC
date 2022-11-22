@@ -20,7 +20,7 @@ public class JDBCDimCurrencyRepository implements  DimCurrencyRepository{
     public int save(DimCurrency dc) {
         return jdbcTemplate.update("INSERT INTO DimCurrency (CurrencyAlternateKey,CurrencyName) VALUES(?,?)",
                 new Object[] {dc.getCurrencyalternatekey(),
-                dc.getCurrencyname()});
+                        dc.getCurrencyname()});
     }
 
     @Override
@@ -33,13 +33,11 @@ public class JDBCDimCurrencyRepository implements  DimCurrencyRepository{
     @Override
     public DimCurrency findById(long id) {
         try{
-            System.out.println("ID : "+id);
-            DimCurrency dimCurrency = jdbcTemplate.queryForObject("SELECT CurrencyKey,CurrencyAlternateKey,CurrencyName FROM DimCurrency WHERE CurrencyKey=?",
+            DimCurrency dimCurrency = jdbcTemplate.queryForObject("SELECT * FROM DimCurrency WHERE CurrencyKey=?",
                     BeanPropertyRowMapper.newInstance(DimCurrency.class), id);
             return dimCurrency;
         } catch (
                 Exception e) {
-            System.out.println("EXCEPTION : "+e.getMessage());
             return null;
         }
     }
