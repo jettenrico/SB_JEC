@@ -29,7 +29,8 @@ public class JDBCDimCurrencyRepository implements  DimCurrencyRepository{
         return jdbcTemplate.update(
                 "UPDATE DimCurrency SET CurrencyAlternateKey=?,CurrencyName=? WHERE CurrencyKey=?",
                 new Object[] { dc.getCurrencyalternatekey(),
-                        dc.getCurrencyname(), dc.getCurrencykey()});
+                        dc.getCurrencyname(),
+                        dc.getCurrencykey()});
     }
 
     @Override
@@ -49,7 +50,7 @@ public class JDBCDimCurrencyRepository implements  DimCurrencyRepository{
         try {
             return jdbcTemplate.update("DELETE FROM DimCurrency WHERE CurrencyKey=?", id);
         }catch (Exception e){
-            return null;
+            return 0;
         }
     }
 
